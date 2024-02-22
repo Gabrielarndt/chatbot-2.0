@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const userMessage = userInput.value;
         appendMessage("Você: ", userMessage);
 
-        const url = "http://localhost:5000/api/chat"; // Atualize a URL para o endpoint do seu backend Flask
+        const url = "http://localhost:5000/api/chat"; // Atualize o URL conforme necessário
 
         fetch(url, {
             method: "POST",

@@ -14,7 +14,6 @@ funny_responses = [
     "Qual é o doce que vira monstro? O biscoito da sorte!",
     "Por que o jacaré tirou o pé da lama? Porque senão o sapo afundava!"
 ]
-
 @app.route("/api/chat", methods=["POST"])
 def chat():
     data = request.get_json()
