@@ -20,7 +20,6 @@ def chat():
     data = request.get_json()
     user_message = data["message"]
 
-   
     if any(word in user_message.lower() for word in ["piada", "engraçado", "risada"]):
         bot_message = random.choice(funny_responses) 
     else:
@@ -29,5 +28,4 @@ def chat():
     return jsonify({"message": bot_message})
 
 if __name__ == "__main__":
-    app.run()
-
+    app.run(debug=True)
