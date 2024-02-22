@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 import random
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app) 
 
 funny_responses = [
     "Por que o pombo não usa tênis? Porque ele já tem asa!",
@@ -14,10 +16,9 @@ funny_responses = [
     "Qual é o doce que vira monstro? O biscoito da sorte!",
     "Por que o jacaré tirou o pé da lama? Porque senão o sapo afundava!"
 ]
-@app.route("/api/chat", methods=["POST"])
+@app.route("/api/chat", methods=["GET"])
 def chat():
-    data = request.get_json()
-    user_message = data["message"]
+    user_message = request.args.get('message', '')
 
     if any(word in user_message.lower() for word in ["piada", "engraçado", "risada"]):
         bot_message = random.choice(funny_responses) 

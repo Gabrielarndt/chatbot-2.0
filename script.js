@@ -23,18 +23,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function sendMessage() {
         const userMessage = userInput.value;
         appendMessage("Você: ", userMessage);
-
-        const url = "http://localhost:5000/api/chat"; // Atualize o URL conforme necessário
-
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: userMessage
-            })
-        })
+    
+        const url = `http://localhost:5000/api/chat?message=${encodeURIComponent(userMessage)}`;
+    
+        fetch(url)
         .then(response => response.json())
         .then(data => {
             const botMessage = data.message;
@@ -43,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Ocorreu um erro", error);
         });
-
+    
         userInput.value = "";
     }
     
